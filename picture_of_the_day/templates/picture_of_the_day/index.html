@@ -1,0 +1,23 @@
+{% extends 'picture_of_the_day/base.html' %}
+{% block title %}
+    Main page
+{% endblock %}
+
+{% block body %}
+    <div class="container bg-light">
+        <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4 py-5">
+            {% for image in images %}
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ image.url }}" class="card-img-top" alt="{{ image.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ image.date }}</h5>
+                            <p class="card-text">{{ image.name }}</p>
+                            <a href="/catalog/{{ image.id }}" class="btn btn-primary">More</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
